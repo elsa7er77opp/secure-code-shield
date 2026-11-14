@@ -1,0 +1,52 @@
+# Secure Code Shield — Build TODO
+
+- [x] Create a clean .NET solution separate from all deleted prototypes.
+- [x] Preserve the approved production architecture with the new source tree.
+- [x] Establish test-first contracts for explicit authorization, redacted evidence, and cancellable scan-task states.
+- [x] Deliver the first local-analysis baseline: scoped file policy, synthetic secret indicator, cancellation points, SQLite recovery, and sanitized report export.
+- [x] Replace the lime-first workstation treatment with the owner-approved GitHub Dark palette and blue operational accent across the Avalonia shell.
+- [x] Replace the interpreted GitHub Dark shell with a direct, screen-by-screen recreation of the owner-supplied reference composition and palette.
+- [x] Extract and apply the owner-supplied fractured green globe as the desktop icon and primary in-window product mark.
+- [x] Replace the rectangular reference crop with a clean isolated fractured-globe icon with no launcher text, progress bar, or oversized background field.
+- [x] Replace the reference crop entirely with a newly designed polished fractured-globe application icon built for small desktop sizes.
+- [x] Remove every unapproved generated globe asset from the live desktop application and keep a neutral temporary product mark until the owner selects a new reference.
+- [x] Resume logo work only after the owner supplies or explicitly approves a specific logo reference.
+- [x] Apply the owner-provided splash and icon as the only approved identity assets, with a restrained rotating-globe loading motion and reduced-motion fallback.
+- [x] Extract the owner-approved shield/globe icon without its black card, wordmark, or background so the desktop icon and header mark are transparent and compact.
+- [x] Build a local login flow with username and password before Analyst Workstation access, backed by strong password hashing, rate limiting, secure local state, and no raw-password persistence.
+- [x] Enforce the app flow: splash animation → local login → Secure Code Shield Analyst Workstation, with no hidden or dead-end screen.
+- [x] Remove the checkerboard/white matte from the approved desktop mark and generate an ICO with true alpha transparency around only the globe and shield.
+- [x] Increase the transparent globe-and-shield mark inside the desktop UI so it reads as a clear product signature rather than a tiny header glyph. Superseded by the owner-provided final trademark at prominent in-app sizes.
+- [x] Design an original CyberBank Secure Code Shield trademark from first principles, using the owner image only as visual direction, then validate it at Windows icon and in-app sizes before adoption. Superseded by the owner-provided final trademark.
+- [x] Replace all interim trademarks with the owner-provided approved trademark in the executable icon, splash presentation, login surface, and Analyst Workstation header.
+- [x] Rebalance the local login window into a premium secure-console composition: larger trademark block, wider work surface, stronger hierarchy, and reduced dead space without changing authentication behavior.
+- [x] Present the owner-approved trademark as a high-contrast identity block with deliberate backing surface, scale, and spacing so it never disappears into the dark UI.
+- [x] Extract only the shield-and-globe symbol from the owner trademark as a clean high-resolution alpha asset, package it at Windows icon sizes, and replace every full-card image placement with the symbol in a precise header/login location.
+- [x] Add project identity, canonical-root scope, and safe path-containment contracts.
+- [x] Add bounded eligible-file policy and explicit exclusion reasons.
+- [x] Add a synthetic, redaction-first secret-indicator rule and finding model.
+- [x] Add application task orchestration and progress snapshots without UI-thread coupling.
+- [x] Add versioned SQLite initialization with WAL and corrupted-store quarantine/recovery.
+- [x] Add SQLite schema v2 for safe scan summaries and local audit records without source, path, or raw-evidence fields.
+- [x] Add transactional scan-summary and audit-event persistence with safe metadata only.
+- [x] Add a pre-migration local-state backup before future schema upgrades.
+- [x] Add Avalonia desktop shell with the approved premium Secure Code Shield workspace.
+- [x] Audit the current Secure Code Shield Desktop implementation against the open premium-workspace item and document the exact Final Edition delta before changing behavior.
+- [x] Close the verified Final Edition UI and local-login acceptance gaps without expanding defensive scanning beyond the existing authorized local-file boundary.
+- [x] Produce a versioned Secure Code Shield Final Windows installer, verify a clean per-user installation and launch, and record current tests/build/hash/smoke evidence.
+- [x] Add TDD contracts for blocked/authorized/reviewing/cancelled/completed local review states and report availability.
+- [x] Build a local review-session adapter that exposes only safe summaries to the Desktop ViewModel.
+- [x] Fix explicit System imports in the LocalReviewRunner so the new adapter compiles in the Desktop project without relying on absent global usings.
+- [x] Replace static MainWindow review, finding, activity, and report placeholders with bindings to the safe local review session.
+- [x] Verify local normal and safe-failure workflow with harmless fixture text before Final packaging.
+- [x] Diagnose the Secure Code Shield desktop launch failure before visual Final review.
+- [x] Add Windows installer pipeline and clean-install verification.
+- [x] Compile an Inno Setup installer that installs the self-contained win-x64 Release build and shows the approved trademark symbol as the installer and EXE icon.
+- [x] Perform a clean install/uninstall smoke test and verify the Start Menu shortcut and installed EXE retain the approved icon.
+- [x] Perform the requested commercial verification against the actual installed Final 1.0.0 executable: installer integrity, installation, launch/restart, local login, authorization, review, redaction, export, cancellation, and post-workflow restart.
+- [x] Record environment provenance truthfully and issue a commercial-verification decision that remains conditional/failed if an independent clean Windows VM cannot be evidenced.
+- [x] Fix the commercial-verification blocker found in the installed binary: successful local authentication can close the Login window before the Workstation is shown, ending the process. Add a failing lifecycle contract, show the replacement MainWindow before closing Login, rebuild the candidate, and rerun the affected installed workflow gates.
+- [ ] Run the post-fix installer with SHA-256 `404ED3A21A00A855E79E48240CA580A0B59BA8C9436384A14E3BAEE06C941882` on an independent clean Windows environment and append the resulting install/launch/runtime evidence to commercial verification.
+- [x] Apply and verify an approved Authenticode signature only if the owner supplies an authorized code-signing certificate; otherwise retain the unsigned disclosure and conditional commercial decision. Owner decision: signing is not required; unsigned disclosure is retained.
+- [x] Organize a root-level delivery folder containing the current post-fix installer, release notes, verification report, hashes, and concise status index without removing original evidence paths.
+- [x] Add an optional installer task named `Create a desktop shortcut`, rebuild the post-fix installer, and verify selecting that task creates a Desktop `.lnk` targeting the installed EXE with the product icon. The existing post-fix installer already contained and passed this task.

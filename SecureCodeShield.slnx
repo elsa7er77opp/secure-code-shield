@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SecureCodeShield.Application/SecureCodeShield.Application.csproj" />
+    <Project Path="src/SecureCodeShield.Desktop/SecureCodeShield.Desktop.csproj" />
+    <Project Path="src/SecureCodeShield.Domain/SecureCodeShield.Domain.csproj" />
+    <Project Path="src/SecureCodeShield.Infrastructure/SecureCodeShield.Infrastructure.csproj" />
+    <Project Path="src/SecureCodeShield.Verifier/SecureCodeShield.Verifier.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SecureCodeShield.Application.Tests/SecureCodeShield.Application.Tests.csproj" />
+    <Project Path="tests/SecureCodeShield.Desktop.Tests/SecureCodeShield.Desktop.Tests.csproj" />
+    <Project Path="tests/SecureCodeShield.Domain.Tests/SecureCodeShield.Domain.Tests.csproj" />
+    <Project Path="tests/SecureCodeShield.Infrastructure.Tests/SecureCodeShield.Infrastructure.Tests.csproj" />
+  </Folder>
+</Solution>

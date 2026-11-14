@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SecureCodeShield.Desktop.ViewModels"
+        x:Class="SecureCodeShield.Desktop.Views.SplashWindow"
+        x:DataType="vm:SplashViewModel"
+        Width="1200"
+        Height="960"
+        MinWidth="900"
+        MinHeight="720"
+        Background="#07090A"
+        Icon="/Assets/Brand/secure-code-shield-brand-symbol.ico"
+        ShowInTaskbar="False"
+        WindowDecorations="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Secure Code Shield">
+    <Grid ClipToBounds="True" Background="#07090A">
+        <Image Source="/Assets/Brand/secure-code-shield-splash.png"
+               Stretch="UniformToFill" />
+        <Image Width="108"
+               Height="108"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top"
+               Margin="0,38,42,0"
+               Source="/Assets/Brand/secure-code-shield-brand-symbol.png"
+               Stretch="Uniform" />
+        <Image x:Name="RotatingGlobe"
+               Source="/Assets/Brand/secure-code-shield-rotating-globe.png"
+               Width="616"
+               Height="616"
+               Margin="478,128,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               IsVisible="{Binding ShouldRotateGlobe}"
+               RenderTransformOrigin="0.5,0.5"
+               Stretch="Uniform">
+            <Image.RenderTransform>
+                <RotateTransform Angle="0" />
+            </Image.RenderTransform>
+        </Image>
+    </Grid>
+</Window>

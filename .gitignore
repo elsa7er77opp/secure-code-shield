@@ -1,0 +1,53 @@
+# Build artifacts
+[Bb]in/
+[Oo]bj/
+TestResults/
+
+# IDE and user state
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local application data and diagnostics
+artifacts/
+coverage/
+logs/
+*.db
+*.db-shm
+*.db-wal
+*.bak
+
+# Generated reports and local project manifests
+reports/
+**/.scshield/
+
+[Bb]in/
+[Oo]bj/
+node_modules/
+artifacts/
+.test-artifacts/
+TestResults/
+.vs/
+*.log
+*.binlog
+*.user
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.pem
+*.key
+*.db
+*.sqlite
+*.exe
+*.dll
+*.pdb
+*.msi
+*.zip
+/dist/
+/release/
+/build-logs/
+/DELIVERY/

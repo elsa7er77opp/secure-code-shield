@@ -1,0 +1,225 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SecureCodeShield.Desktop.ViewModels"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="SecureCodeShield.Desktop.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        mc:Ignorable="d"
+        Width="1600"
+        Height="930"
+        MinWidth="1180"
+        MinHeight="740"
+        Background="#080A08"
+        Foreground="#E6E9E5"
+        FontFamily="Segoe UI Variable, Segoe UI"
+        Icon="/Assets/Brand/secure-code-shield-brand-symbol.ico"
+        Title="Secure Code Shield">
+
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#121611" />
+            <Setter Property="BorderBrush" Value="#2A302B" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="#E6E9E5" />
+            <Setter Property="Padding" Value="10,6" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+        <Style Selector="Button:pointerover">
+            <Setter Property="BorderBrush" Value="#A8D600" />
+            <Setter Property="Background" Value="#1B2018" />
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#090B09" />
+            <Setter Property="BorderBrush" Value="#252B26" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="#C7CDC5" />
+            <Setter Property="Padding" Value="10,0" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="52,*,26">
+        <Border Grid.Row="0" Background="#0C0F0D" BorderBrush="#282D28" BorderThickness="0,0,0,1">
+            <Grid ColumnDefinitions="215,250,*,Auto" Margin="10,0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="9">
+                    <Image Width="52" Height="52" Source="/Assets/Brand/secure-code-shield-brand-symbol.png" Stretch="Uniform" />
+                    <TextBlock Text="Secure Code Shield" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <Border Grid.Column="1" VerticalAlignment="Center" Height="32" Background="#101410" BorderBrush="#252B26" BorderThickness="1" CornerRadius="3" Padding="10,0">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+                        <Ellipse Width="7" Height="7" Fill="#A8D600" />
+                        <TextBlock Text="{Binding ProjectContext}" FontSize="11" />
+                        <TextBlock Text="⌄" Foreground="#8A9089" FontSize="12" />
+                    </StackPanel>
+                </Border>
+
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="1">
+                    <TextBlock Text="{Binding ReviewReadiness}" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Center" />
+                    <TextBlock Text="{Binding ScanStatus}" FontSize="9" Foreground="#858B84" HorizontalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                    <TextBlock Text="CyberBank Labs" Foreground="#A8D600" FontStyle="Italic" VerticalAlignment="Center" Margin="0,0,8,0" />
+                    <Button Content="Choose project" Click="ChooseProjectClick" />
+                    <Button Content="Authorize" Click="AuthorizeProjectClick" ToolTip.Tip="Explicitly authorize the selected local project before review." />
+                    <Button Content="Start local review" Click="StartLocalReviewClick" IsEnabled="{Binding CanStartLocalReview}" Background="#A8D600" BorderBrush="#A8D600" Foreground="#111400" ToolTip.Tip="Reads eligible local text files only; nothing is executed." />
+                    <Button Content="Cancel" Click="CancelLocalReviewClick" IsEnabled="{Binding IsLocalReviewRunning}" ToolTip.Tip="Stops the current local review." />
+                    <Button Content="Export Report" Click="ExportReportClick" IsEnabled="{Binding CanExportSanitizedReport}" ToolTip.Tip="Writes a sanitized local report after a completed review." />
+                    <Button Content="..." Width="34" Padding="0" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" ColumnDefinitions="144,210,*,420">
+            <Border Grid.Column="0" Background="#0C0E0C" BorderBrush="#282D28" BorderThickness="0,0,1,0">
+                <Grid RowDefinitions="*,Auto">
+                    <StackPanel Margin="12,14" Spacing="5">
+                        <Border Background="#202807" CornerRadius="2" Padding="10,8">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="▣" Foreground="#A8D600" FontSize="14" />
+                                <TextBlock Text="Dashboard" Foreground="#C9DE74" FontSize="11" FontWeight="SemiBold" />
+                            </StackPanel>
+                        </Border>
+                        <Border Padding="10,8"><StackPanel Orientation="Horizontal" Spacing="10"><TextBlock Text="◧" Foreground="#9AA19A" FontSize="13" /><TextBlock Text="Projects" FontSize="11" /></StackPanel></Border>
+                        <Border Padding="10,8"><StackPanel Orientation="Horizontal" Spacing="10"><TextBlock Text="◇" Foreground="#9AA19A" FontSize="13" /><TextBlock Text="Scans" FontSize="11" /></StackPanel></Border>
+                        <Border Padding="10,8"><StackPanel Orientation="Horizontal" Spacing="10"><TextBlock Text="◇" Foreground="#9AA19A" FontSize="13" /><TextBlock Text="Findings" FontSize="11" /></StackPanel></Border>
+                        <Border Padding="10,8"><StackPanel Orientation="Horizontal" Spacing="10"><TextBlock Text="▤" Foreground="#9AA19A" FontSize="13" /><TextBlock Text="Reports" FontSize="11" /></StackPanel></Border>
+                        <Border Padding="10,8"><StackPanel Orientation="Horizontal" Spacing="10"><TextBlock Text="⬡" Foreground="#9AA19A" FontSize="13" /><TextBlock Text="Policies" FontSize="11" /></StackPanel></Border>
+                        <Border Padding="10,8"><StackPanel Orientation="Horizontal" Spacing="10"><TextBlock Text="◌" Foreground="#9AA19A" FontSize="13" /><TextBlock Text="Settings" FontSize="11" /></StackPanel></Border>
+                    </StackPanel>
+                    <Border Grid.Row="1" Margin="12" Padding="10" Background="#111410" BorderBrush="#252B26" BorderThickness="1" CornerRadius="2">
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="CyberBank Labs" FontStyle="Italic" Foreground="#A8D600" FontSize="14" />
+                            <TextBlock Text="Final Edition v1.0.0" FontSize="9" Foreground="#858B84" />
+                            <StackPanel Orientation="Horizontal" Spacing="6"><Ellipse Width="6" Height="6" Fill="#A8D600" /><TextBlock Text="System Protected" FontSize="9" Foreground="#B6BBB3" /></StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="1" Background="#0A0C0A" BorderBrush="#282D28" BorderThickness="0,0,1,0">
+                <Grid RowDefinitions="48,*,Auto">
+                    <Border Grid.Row="0" BorderBrush="#282D28" BorderThickness="0,0,0,1" Padding="13,0">
+                        <Grid ColumnDefinitions="*,Auto" VerticalAlignment="Center">
+                            <TextBlock Text="PROJECT EXPLORER" FontSize="10" FontWeight="Bold" Foreground="#D3D8D0" />
+                            <TextBlock Grid.Column="1" Text="×" Foreground="#7F867E" />
+                        </Grid>
+                    </Border>
+                    <StackPanel Grid.Row="1" Margin="13,14" Spacing="7">
+                        <StackPanel Orientation="Horizontal" Spacing="7"><TextBlock Text="●" Foreground="#A8D600" FontSize="9" /><TextBlock Text="{Binding ProjectContext}" FontSize="11" FontWeight="SemiBold" /></StackPanel>
+                        <TextBlock Text="{Binding ScanStatus}" TextWrapping="Wrap" FontSize="10" Foreground="#858B84" Margin="16,0,0,8" />
+                        <Border Height="1" Background="#202520" />
+                        <TextBlock Text="SCOPE PREVIEW" FontSize="9" FontWeight="Bold" Foreground="#717970" Margin="0,7,0,0" />
+                        <TextBlock Text="• no source upload" FontSize="10" Foreground="#A2A8A0" />
+                        <TextBlock Text="• no code execution" FontSize="10" Foreground="#A2A8A0" />
+                        <TextBlock Text="• redacted evidence only" FontSize="10" Foreground="#A2A8A0" />
+                    </StackPanel>
+                    <Border Grid.Row="2" Margin="12" Padding="10" Background="#111410" BorderBrush="#252B26" BorderThickness="1" CornerRadius="2">
+                        <StackPanel Spacing="3"><TextBlock Text="LOCAL REVIEW STATE" FontSize="9" FontWeight="Bold" Foreground="#858B84" /><TextBlock Text="{Binding ReviewReadiness}" FontSize="10" Foreground="#C7CDC5" /></StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Column="2" RowDefinitions="98,76,*,174" Background="#080A08">
+                <Grid Grid.Row="0" ColumnDefinitions="*,*,*,*,*" Margin="12,12,8,8">
+                    <Border Grid.Column="0" Margin="0,0,7,0" Background="#0E110E" BorderBrush="#242A24" BorderThickness="1" CornerRadius="3" Padding="12">
+                        <StackPanel Spacing="5"><TextBlock Text="⊙  REDACTED FINDINGS" Foreground="#FF4B55" FontSize="10" FontWeight="Bold" /><TextBlock Text="{Binding FindingCount}" FontSize="23" FontWeight="SemiBold" /><TextBlock Text="Local review count" FontSize="9" Foreground="#858B84" /></StackPanel>
+                    </Border>
+                    <Border Grid.Column="1" Margin="0,0,7,0" Background="#0E110E" BorderBrush="#242A24" BorderThickness="1" CornerRadius="3" Padding="12">
+                        <StackPanel Spacing="5"><TextBlock Text="⊙  AUTHORIZATION" Foreground="#FF8A2A" FontSize="10" FontWeight="Bold" /><TextBlock Text="{Binding ReviewReadiness}" FontSize="14" FontWeight="SemiBold" TextWrapping="Wrap" /><TextBlock Text="Explicit local consent" FontSize="9" Foreground="#858B84" /></StackPanel>
+                    </Border>
+                    <Border Grid.Column="2" Margin="0,0,7,0" Background="#0E110E" BorderBrush="#242A24" BorderThickness="1" CornerRadius="3" Padding="12">
+                        <StackPanel Spacing="5"><TextBlock Text="⊙  EXECUTION" Foreground="#E6C500" FontSize="10" FontWeight="Bold" /><TextBlock Text="Never" FontSize="23" FontWeight="SemiBold" /><TextBlock Text="No selected file runs" FontSize="9" Foreground="#858B84" /></StackPanel>
+                    </Border>
+                    <Border Grid.Column="3" Margin="0,0,7,0" Background="#0E110E" BorderBrush="#242A24" BorderThickness="1" CornerRadius="3" Padding="12">
+                        <StackPanel Spacing="5"><TextBlock Text="⊙  OUTPUT" Foreground="#36B7FF" FontSize="10" FontWeight="Bold" /><TextBlock Text="Local" FontSize="23" FontWeight="SemiBold" /><TextBlock Text="Sanitized reports only" FontSize="9" Foreground="#858B84" /></StackPanel>
+                    </Border>
+                    <Border Grid.Column="4" Background="#0E110E" BorderBrush="#242A24" BorderThickness="1" CornerRadius="3" Padding="12">
+                        <StackPanel Spacing="5"><TextBlock Text="⊙  ENGINE" Foreground="#B77AFF" FontSize="10" FontWeight="Bold" /><TextBlock Text="Ready" FontSize="23" FontWeight="SemiBold" /><TextBlock Text="Local text review only" FontSize="9" Foreground="#858B84" /></StackPanel>
+                    </Border>
+                </Grid>
+
+                <Border Grid.Row="1" Margin="12,0,8,8" Background="#0D100E" BorderBrush="#242A24" BorderThickness="1" CornerRadius="3" Padding="12,8">
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                        <StackPanel Orientation="Horizontal" Spacing="5"><TextBlock Text="FINDINGS" FontSize="10" FontWeight="Bold" /><TextBlock Text="{Binding FindingCount}" FontSize="10" FontWeight="Bold" Foreground="#A8D600" /></StackPanel>
+                        <TextBlock Grid.Column="1" Text="×" Foreground="#7F867E" />
+                        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="7" Margin="0,8,0,0">
+                            <TextBox Width="210" Height="28" PlaceholderText="Search findings..." />
+                            <Button Content="All Severities  ⌄" Height="28" />
+                            <Button Content="All Categories  ⌄" Height="28" />
+                            <Button Content="All Statuses  ⌄" Height="28" />
+                            <Button Content="⌕" Height="28" Width="31" Padding="0" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="2" Margin="12,0,8,8" Background="#0B0D0B" BorderBrush="#242A24" BorderThickness="1" CornerRadius="3">
+                    <Grid RowDefinitions="32,*">
+                        <Border Grid.Row="0" Background="#111411" BorderBrush="#242A24" BorderThickness="0,0,0,1" Padding="12,0">
+                            <Grid ColumnDefinitions="74,*,90,115,48,78" VerticalAlignment="Center">
+                                <TextBlock Text="SEVERITY" FontSize="9" FontWeight="Bold" Foreground="#8D948C" />
+                                <TextBlock Grid.Column="1" Text="TITLE" FontSize="9" FontWeight="Bold" Foreground="#8D948C" />
+                                <TextBlock Grid.Column="2" Text="CATEGORY" FontSize="9" FontWeight="Bold" Foreground="#8D948C" />
+                                <TextBlock Grid.Column="3" Text="FILE" FontSize="9" FontWeight="Bold" Foreground="#8D948C" />
+                                <TextBlock Grid.Column="4" Text="LINE" FontSize="9" FontWeight="Bold" Foreground="#8D948C" />
+                                <TextBlock Grid.Column="5" Text="STATUS" FontSize="9" FontWeight="Bold" Foreground="#8D948C" />
+                            </Grid>
+                        </Border>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="390" Spacing="8">
+                            <Border Width="38" Height="38" Background="#141A0E" BorderBrush="#3B480E" BorderThickness="1" CornerRadius="19" HorizontalAlignment="Center"><TextBlock Text="&lt;/&gt;" Foreground="#A8D600" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                            <TextBlock Text="{Binding ReviewReadiness}" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding ScanStatus}" TextWrapping="Wrap" TextAlignment="Center" Foreground="#858B84" FontSize="10" />
+                            <Button Content="Choose authorized folder" Click="ChooseProjectClick" HorizontalAlignment="Center" Margin="0,4,0,0" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="3" ColumnDefinitions="*,*" Margin="12,0,8,12">
+                    <Border Grid.Column="0" Margin="0,0,7,0" Background="#0D100E" BorderBrush="#242A24" BorderThickness="1" CornerRadius="3" Padding="12">
+                        <Grid RowDefinitions="Auto,*"><Grid ColumnDefinitions="*,Auto"><TextBlock Text="SCAN ACTIVITY" FontSize="10" FontWeight="Bold" /><TextBlock Grid.Column="1" Text="View full log" Foreground="#A8D600" FontSize="9" FontWeight="SemiBold" /></Grid>
+                            <StackPanel Grid.Row="1" Margin="2,13,0,0" Spacing="10">
+                                <StackPanel Orientation="Horizontal" Spacing="9"><Ellipse Width="7" Height="7" Fill="#A8D600" /><TextBlock Text="{Binding ScanStatus}" FontSize="10" /><TextBlock Text="• local" Foreground="#7F867E" FontSize="10" /></StackPanel>
+                                <StackPanel Orientation="Horizontal" Spacing="9"><Ellipse Width="7" Height="7" Fill="#485048" /><TextBlock Text="Eligible local text only" FontSize="10" Foreground="#8A9089" /></StackPanel>
+                                <StackPanel Orientation="Horizontal" Spacing="9"><Ellipse Width="7" Height="7" Fill="#485048" /><TextBlock Text="No process execution" FontSize="10" Foreground="#8A9089" /></StackPanel>
+                                <StackPanel Orientation="Horizontal" Spacing="9"><Ellipse Width="7" Height="7" Fill="#485048" /><TextBlock Text="Redacted findings only" FontSize="10" Foreground="#8A9089" /></StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="1" Background="#0D100E" BorderBrush="#242A24" BorderThickness="1" CornerRadius="3" Padding="12">
+                        <Grid RowDefinitions="Auto,*,Auto"><TextBlock Text="SCAN SUMMARY" FontSize="10" FontWeight="Bold" />
+                            <Grid Grid.Row="1" ColumnDefinitions="128,*" VerticalAlignment="Center"><Border Width="94" Height="94" BorderBrush="#303630" BorderThickness="9" CornerRadius="47" HorizontalAlignment="Center"><StackPanel VerticalAlignment="Center"><TextBlock Text="{Binding FindingCount}" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" /><TextBlock Text="Redacted Findings" FontSize="8" Foreground="#858B84" HorizontalAlignment="Center" /></StackPanel></Border>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="5"><TextBlock Text="•  Critical    —" Foreground="#FF4B55" FontSize="10" /><TextBlock Text="•  High        —" Foreground="#FF8A2A" FontSize="10" /><TextBlock Text="•  Medium  —" Foreground="#E6C500" FontSize="10" /><TextBlock Text="•  Low          —" Foreground="#36B7FF" FontSize="10" /><TextBlock Text="•  Info         —" Foreground="#B77AFF" FontSize="10" /></StackPanel></Grid>
+                            <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="12"><TextBlock Text="Files scanned  —" FontSize="9" Foreground="#858B84" /><TextBlock Text="Duration  —" FontSize="9" Foreground="#858B84" /><TextBlock Text="Rules  —" FontSize="9" Foreground="#858B84" /></StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+
+            <Border Grid.Column="3" Background="#0B0D0B" BorderBrush="#282D28" BorderThickness="1,0,0,0">
+                <Grid RowDefinitions="48,32,*,38,*,Auto">
+                    <Border Grid.Row="0" BorderBrush="#282D28" BorderThickness="0,0,0,1" Padding="14,0"><Grid ColumnDefinitions="*,Auto" VerticalAlignment="Center"><TextBlock Text="CODE INSPECTOR" FontSize="10" FontWeight="Bold" /><TextBlock Grid.Column="1" Text="×" Foreground="#7F867E" /></Grid></Border>
+                    <Border Grid.Row="1" Background="#101310" BorderBrush="#242A24" BorderThickness="0,0,0,1" Padding="12,0"><StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8"><TextBlock Text="TS" Foreground="#36B7FF" FontSize="10" FontWeight="Bold" /><TextBlock Text="No finding selected" FontSize="10" Foreground="#A2A8A0" /><TextBlock Text="×" Foreground="#7F867E" /></StackPanel></Border>
+                    <Grid Grid.Row="2" Background="#090B09" ColumnDefinitions="40,*"><Border Background="#0D100E" BorderBrush="#202520" BorderThickness="0,0,1,0"><TextBlock Text="1&#xA;2&#xA;3&#xA;4&#xA;5&#xA;6&#xA;7&#xA;8" TextAlignment="Right" Margin="0,15,9,0" FontFamily="Cascadia Mono, Consolas" FontSize="10" Foreground="#4E564E" /></Border><StackPanel Grid.Column="1" Margin="14" Spacing="7"><TextBlock Text="Select a finding to inspect a" FontFamily="Cascadia Mono, Consolas" FontSize="11" Foreground="#6F776F" /><TextBlock Text="redacted local evidence snippet." FontFamily="Cascadia Mono, Consolas" FontSize="11" Foreground="#6F776F" /><TextBlock Text="No client code is displayed before" FontFamily="Cascadia Mono, Consolas" FontSize="11" Foreground="#6F776F" /><TextBlock Text="an authorized scan produces it." FontFamily="Cascadia Mono, Consolas" FontSize="11" Foreground="#6F776F" /></StackPanel></Grid>
+                    <Border Grid.Row="3" Background="#101310" BorderBrush="#242A24" BorderThickness="0,1,0,1" Padding="12,0"><StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="24"><TextBlock Text="DETAILS" Foreground="#A8D600" FontSize="9" FontWeight="Bold" /><TextBlock Text="RECOMMENDATION" Foreground="#8A9089" FontSize="9" FontWeight="Bold" /><TextBlock Text="REFERENCES" Foreground="#8A9089" FontSize="9" FontWeight="Bold" /></StackPanel></Border>
+                    <StackPanel Grid.Row="4" Margin="14" Spacing="11"><TextBlock Text="No finding selected" FontSize="15" FontWeight="SemiBold" /><TextBlock Text="Finding details, safe remediation guidance, and locally redacted evidence will appear in this panel." TextWrapping="Wrap" FontSize="10" Foreground="#858B84" /><Border Height="1" Background="#242A24" /><TextBlock Text="DISPLAY POLICY" FontSize="9" FontWeight="Bold" Foreground="#717970" /><TextBlock Text="Raw secret values and full source bodies are never persisted to findings or reports." TextWrapping="Wrap" FontSize="10" Foreground="#B8BDB6" /></StackPanel>
+                    <Border Grid.Row="5" Margin="12" Padding="9" Background="#101410" BorderBrush="#2A302B" BorderThickness="1" CornerRadius="2"><StackPanel Orientation="Horizontal" Spacing="7"><Ellipse Width="6" Height="6" Fill="#A8D600" /><TextBlock Text="Evidence isolation active" FontSize="10" Foreground="#C7D97A" /></StackPanel></Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="2" Background="#0B0D0B" BorderBrush="#282D28" BorderThickness="0,1,0,0" Padding="14,0">
+            <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,*,Auto" VerticalAlignment="Center">
+                <TextBlock Text="◉  Engine: v1.0.0" FontSize="9" Foreground="#A8AFA7" />
+                <TextBlock Grid.Column="1" Text="◉  Rules: —" FontSize="9" Foreground="#A8AFA7" Margin="24,0,0,0" />
+                <TextBlock Grid.Column="2" Text="◉  Signatures: —" FontSize="9" Foreground="#A8AFA7" Margin="24,0,0,0" />
+                <TextBlock Grid.Column="3" Text="◉  Database: Up to date" FontSize="9" Foreground="#A8AFA7" Margin="24,0,0,0" />
+                <StackPanel Grid.Column="5" Orientation="Horizontal" Spacing="6"><Ellipse Width="6" Height="6" Fill="#A8D600" /><TextBlock Text="System Protected" FontSize="9" Foreground="#C7D97A" /></StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

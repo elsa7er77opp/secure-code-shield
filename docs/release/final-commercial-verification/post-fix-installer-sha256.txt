@@ -1,0 +1,3 @@
+SHA256 hash of artifacts\installer\CyberBank-Secure-Code-Shield-Final-Setup-win-x64.exe:
+404ed3a21a00a855e79e48240ca580a0b59ba8c9436384a14e3baee06c941882
+CertUtil: -hashfile command completed successfully.

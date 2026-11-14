@@ -1,0 +1,76 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SecureCodeShield.Desktop.ViewModels"
+        x:Class="SecureCodeShield.Desktop.Views.LoginWindow"
+        x:DataType="vm:LoginViewModel"
+        Width="640"
+        Height="760"
+        MinWidth="600"
+        MinHeight="710"
+        Background="#07090A"
+        Icon="/Assets/Brand/secure-code-shield-brand-symbol.ico"
+        WindowStartupLocation="CenterScreen"
+        Title="Secure Code Shield — Local Sign In">
+    <Window.Styles>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#0B0E0C" />
+            <Setter Property="Foreground" Value="#E7ECE4" />
+            <Setter Property="BorderBrush" Value="#303730" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="12,0" />
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+        <Style Selector="TextBox:focus">
+            <Setter Property="BorderBrush" Value="#A8D600" />
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#A8D600" />
+            <Setter Property="Foreground" Value="#101400" />
+            <Setter Property="BorderBrush" Value="#A8D600" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="14,10" />
+        </Style>
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#C4F137" />
+        </Style>
+    </Window.Styles>
+    <Grid RowDefinitions="*,Auto" Margin="52,42">
+        <StackPanel HorizontalAlignment="Stretch" Spacing="0">
+            <Grid ColumnDefinitions="124,*" ColumnSpacing="20" VerticalAlignment="Center">
+                <Image Width="112" Height="112" Source="/Assets/Brand/secure-code-shield-brand-symbol.png" Stretch="Uniform" />
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="6">
+                    <TextBlock Text="CyberBank" FontSize="30" FontWeight="SemiBold" Foreground="#F0F4EC" />
+                    <TextBlock Text="SECURE CODE SHIELD" FontSize="12" FontWeight="Bold" Foreground="#A8D600" LetterSpacing="1.8" />
+                    <Border Background="#0D110E" BorderBrush="#2D382C" BorderThickness="1" CornerRadius="3" Padding="9,6" Margin="0,5,0,0">
+                        <TextBlock Text="LOCAL SECURITY WORKSTATION" FontSize="10" FontWeight="SemiBold" Foreground="#B8C4B2" LetterSpacing="0.8" />
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+            <Border Height="1" Background="#303A31" Margin="0,34,0,28" />
+            <TextBlock Text="Unlock your local workstation" FontSize="28" FontWeight="SemiBold" Foreground="#EDF1E9" />
+            <TextBlock Text="Your credentials remain on this device. No source code, password, or project data is sent to a server." TextWrapping="Wrap" FontSize="13" Foreground="#A6ADA5" Margin="0,9,0,30" />
+
+            <TextBlock Text="USERNAME" FontSize="10" FontWeight="Bold" Foreground="#A8AFA6" Margin="0,0,0,7" />
+            <TextBox x:Name="UsernameBox" Height="42" PlaceholderText="Local administrator" />
+            <TextBlock Text="PASSWORD" FontSize="10" FontWeight="Bold" Foreground="#A8AFA6" Margin="0,20,0,7" />
+            <TextBox x:Name="PasswordBox" Height="42" PasswordChar="●" PlaceholderText="Enter password" />
+            <StackPanel IsVisible="{Binding IsFirstRun}">
+                <TextBlock Text="CONFIRM PASSWORD" FontSize="10" FontWeight="Bold" Foreground="#A8AFA6" Margin="0,20,0,7" />
+                <TextBox x:Name="ConfirmationBox" Height="42" PasswordChar="●" PlaceholderText="Confirm password" />
+                <TextBlock Text="First setup requires at least 12 characters with upper-case, lower-case, number, and symbol." TextWrapping="Wrap" FontSize="10" Foreground="#858D84" Margin="0,8,0,0" />
+            </StackPanel>
+
+            <Border Background="#0C100C" BorderBrush="#2D372B" BorderThickness="1" CornerRadius="4" Padding="13" Margin="0,28,0,0">
+                <TextBlock Text="{Binding StatusMessage}" TextWrapping="Wrap" FontSize="11" Foreground="#D1D8CE" />
+            </Border>
+            <Button Content="Continue securely" Height="48" HorizontalAlignment="Stretch" Margin="0,20,0,0" Click="ContinueClick" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="7" HorizontalAlignment="Center" Margin="0,26,0,0">
+            <Ellipse Width="6" Height="6" Fill="#A8D600" />
+            <TextBlock Text="LOCAL-ONLY • PBKDF2-SHA512 • RATE LIMITED" FontSize="9" Foreground="#8D958A" />
+        </StackPanel>
+    </Grid>
+</Window>
