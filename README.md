@@ -1,16 +1,31 @@
 # Secure Code Shield
 
-Secure Code Shield is a **local-first Windows desktop workstation** for reviewing a project folder that its user explicitly authorizes. The application is being rebuilt from a clean codebase; it does not reuse the retired Electron prototypes.
+A local static review workstation checks a user-authorized project folder, masks evidence and exports sanitized reports. Domain rules, application coordination, infrastructure scanning and an Avalonia UI separate detection from report presentation.
 
-The first version is intentionally defensive and bounded. It will analyze supported local text files without executing them, redact sensitive evidence before persistence or display, track scan progress and cancellation safely, and export sanitized reports. It will not upload source code, save raw secrets, or start any scan without explicit authorization.
+## Engineering scope
 
-## Architecture
+The release record covers the installed local workflow. Its commercial verification decision remains conditional on clean-machine evidence and signing. Test fixtures deliberately contain credential-shaped data used to exercise detection and redaction.
 
-The approved design is in [`docs/architecture/Production-Architecture.md`](docs/architecture/Production-Architecture.md). The desktop shell will use native-rendered Avalonia controls; analysis rules and local safety policies remain in framework-independent .NET projects.
+## Getting started
 
-## Current foundation
+Use the .NET 10 SDK on Windows. From the repository root, build with `dotnet build SecureCodeShield.slnx`. To run the isolated domain suite, use `dotnet test tests/SecureCodeShield.Domain.Tests/SecureCodeShield.Domain.Tests.csproj`. Start the desktop application with `dotnet run --project src/SecureCodeShield.Desktop/SecureCodeShield.Desktop.csproj`.
 
-The clean solution currently establishes three tested domain contracts: explicit project authorization, safe evidence masking, and a visible scan-task cancellation protocol. The implementation will grow through test-first increments; generated fixtures must never contain real credentials or customer source.
+## Status and verification
+
+Final 1.0.0 documented. Commercial verification conditional fail.
+
+95 domain tests passed locally. Installer signing and clean-VM acceptance were not repeated.
+
+## Source and evidence
+
+- [src](src)
+- [tests](tests)
+- [Windows-Final-1.0.0.md](docs/release/Windows-Final-1.0.0.md)
+- [verification-report.md](docs/release/final-commercial-verification/verification-report.md)
+
+## Design record
+
+[Production-Architecture.md](docs/architecture/Production-Architecture.md)
 
 ## Build on Windows
 
@@ -23,3 +38,7 @@ dotnet test tests\SecureCodeShield.Domain.Tests\SecureCodeShield.Domain.Tests.cs
 ## Scope control
 
 Telegram, Discord, payment, remote scanning, cloud synchronization, and Web3 Collection Studio are outside this repository and must not be added without an explicit product decision.
+
+## Author
+
+Ahmed Mohamed Elsayed Elreefy. Engineering work includes requirements, technical decisions, AI-assisted implementation, debugging and acceptance review.
