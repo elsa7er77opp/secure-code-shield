@@ -51,3 +51,6 @@ TestResults/
 /release/
 /build-logs/
 /DELIVERY/
+
+# Track the report exporter implementation.
+!/src/SecureCodeShield.Infrastructure/Reports/
