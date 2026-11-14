@@ -14,7 +14,7 @@ Use the .NET 10 SDK on Windows. From the repository root, build with `dotnet bui
 
 Final 1.0.0 documented. Commercial verification conditional fail.
 
-95 domain tests passed locally. Installer signing and clean-VM acceptance were not repeated.
+95 domain tests passed locally. Seven scanner alerts trace to six test fixtures. The local remediation restores the report exporter source and declares the Windows ProtectedData dependency. Four targeted infrastructure tests exercised scanning, cancellation and sanitized export. Installer signing and clean-VM acceptance were not repeated.
 
 ## Source and evidence
 
